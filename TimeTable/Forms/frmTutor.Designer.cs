@@ -38,8 +38,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.cmbWorkingPatternID = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.cmbWorkingPatternID = new System.Windows.Forms.ComboBox();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -97,6 +97,7 @@
             this.chkActive.Size = new System.Drawing.Size(15, 14);
             this.chkActive.TabIndex = 3;
             this.chkActive.UseVisualStyleBackColor = true;
+            this.chkActive.CheckStateChanged += new System.EventHandler(this.DataChanged);
             // 
             // label3
             // 
@@ -113,6 +114,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(273, 27);
             this.txtName.TabIndex = 1;
+            this.txtName.TextChanged += new System.EventHandler(this.DataChanged);
             // 
             // label2
             // 
@@ -145,14 +147,6 @@
             this.tabPage2.Text = "Working Pattern";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // cmbWorkingPatternID
-            // 
-            this.cmbWorkingPatternID.FormattingEnabled = true;
-            this.cmbWorkingPatternID.Location = new System.Drawing.Point(126, 16);
-            this.cmbWorkingPatternID.Name = "cmbWorkingPatternID";
-            this.cmbWorkingPatternID.Size = new System.Drawing.Size(265, 27);
-            this.cmbWorkingPatternID.TabIndex = 0;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -161,6 +155,14 @@
             this.label4.Size = new System.Drawing.Size(113, 19);
             this.label4.TabIndex = 1;
             this.label4.Text = "Working Pattern";
+            // 
+            // cmbWorkingPatternID
+            // 
+            this.cmbWorkingPatternID.FormattingEnabled = true;
+            this.cmbWorkingPatternID.Location = new System.Drawing.Point(126, 16);
+            this.cmbWorkingPatternID.Name = "cmbWorkingPatternID";
+            this.cmbWorkingPatternID.Size = new System.Drawing.Size(265, 27);
+            this.cmbWorkingPatternID.TabIndex = 0;
             // 
             // frmTutor
             // 
@@ -176,8 +178,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTutor";
             this.Text = "Tutor";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.evtFormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.evtFormClosed);
             this.Load += new System.EventHandler(this.evtFormLoad);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

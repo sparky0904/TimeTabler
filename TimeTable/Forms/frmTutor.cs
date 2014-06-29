@@ -14,26 +14,21 @@ namespace TimeTable.Forms
 {
     public partial class frmTutor : Form
     {
+        // Variables
+        public bool dirtyData = false;
+
         public frmTutor()
         {
             InitializeComponent();
         }
 
-        private void evtFormClosing(object sender, FormClosingEventArgs e)
-        {
 
-           
-        }
-
-        private void evtFormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
-
+        #region Event Handlers
+        
         private void evtFormLoad(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'databaseDataSet.spTutorSelectListByLastName' table. You can move, or remove it, as needed.
-            
+
             clsFormPreperation.SetUpForm(this);
             this.DataList.DisplayMember = "TutorDisplayName";
             this.DataList.ValueMember = "Id";
@@ -45,9 +40,11 @@ namespace TimeTable.Forms
 
         }
 
-        private void spTutorSelectListByLastNameBindingSource_CurrentChanged(object sender, EventArgs e)
+        private void DataChanged(object sender, EventArgs e)
         {
+            dirtyData = true;
+        } 
 
-        }
+        #endregion
     }
 }

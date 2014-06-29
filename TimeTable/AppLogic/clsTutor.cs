@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace TimeTable.AppLogic
 {
@@ -13,6 +14,12 @@ namespace TimeTable.AppLogic
         private int workingPatternID;
         private string tutorLastName;
         private string tutorFirstName;
+
+        public int Id
+        {
+            get { return (id); }
+            set { id = value; }
+        }
 
         public string TutorFirstName
         {
@@ -26,12 +33,17 @@ namespace TimeTable.AppLogic
             set { tutorLastName = value; }
         }
 
-        public string TutorFullName
+        public string TutorDisplayName
         {
             get
             {
                 return (TutorLastName + " " + TutorFirstName);
             }
+        }
+
+        public static List<clsTutor> GetList()
+        {
+            return clsTutorDB.GetList();
         }
 
 

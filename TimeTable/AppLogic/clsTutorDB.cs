@@ -5,15 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TimeTable.HelperClasses;
+using System.Windows.Forms;
 
 namespace TimeTable.AppLogic
 {
     public static class clsTutorDB
     {
-        public static List<clsTutor> GetTutors()
+        public static List<clsTutor> GetList()
         {
             List<clsTutor> myTutorList = new List<clsTutor>();
-            string con = clsGlobalParameters.ConnectionString;
+            string con = Properties.Settings.Default.DatabaseConnectionString;
             clsTutor theTutor;
 
             try
@@ -31,6 +32,7 @@ namespace TimeTable.AppLogic
                         {
                             theTutor = new clsTutor();
 
+                            theTutor.Id = myReader.GetInt32(myReader.GetOrdinal("Id"));
                             theTutor.TutorFirstName = myReader["TutorFirstName"].ToString();
                             theTutor.TutorLastName = myReader["TutorLastName"].ToString();
 
@@ -40,10 +42,9 @@ namespace TimeTable.AppLogic
                     }
                 }
             }
-            catch (Exception)
-            {
-                
-                throw;
+            catch (Exception ex)
+            {                
+               MessageBox.Show(ex.Message , "An Error in TutorDB.GetList", MessageBoxButtons.OK) ;
             }
             return myTutorList;
         }

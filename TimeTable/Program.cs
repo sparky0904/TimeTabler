@@ -14,9 +14,12 @@ namespace TimeTable
         [STAThread]
         static void Main()
         {
+            // Set up the applicaiton
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            // Load the inital Parent
+            Application.Run(new MDIParent1());
         }
     }
 }

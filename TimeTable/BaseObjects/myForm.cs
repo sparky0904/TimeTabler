@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TimeTable
+namespace TimeTable.BaseObjects
 {
-    public partial class Form1 : Form
+    public partial class myForm : Form
     {
-        public Form1()
+        public myForm()
         {
             InitializeComponent();
+        }
+
+        private void BaseForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

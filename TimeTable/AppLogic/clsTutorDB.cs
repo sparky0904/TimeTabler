@@ -26,7 +26,7 @@ namespace TimeTable.AppLogic
 
                     myConnection.Open();
 
-                    using(SqlDataReader myReader = myCommand.ExecuteReader())
+                    using (SqlDataReader myReader = myCommand.ExecuteReader())
                     {
                         while (myReader.Read())
                         {
@@ -43,10 +43,48 @@ namespace TimeTable.AppLogic
                 }
             }
             catch (Exception ex)
-            {                
-               MessageBox.Show(ex.Message , "An Error in TutorDB.GetList", MessageBoxButtons.OK) ;
+            {
+                MessageBox.Show(ex.Message, "An Error in TutorDB.GetList", MessageBoxButtons.OK);
             }
+
             return myTutorList;
+        }
+
+        internal static clsTutor GetSingleRecord(int theId)
+        {
+            string con = Properties.Settings.Default.DatabaseConnectionString;
+            clsTutor theTutor = new clsTutor();
+
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    SqlCommand myCommand = new SqlCommand("spTutorSelectTutorById", myConnection);
+                    myCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    myCommand.Parameters.Add(new SqlParameter("@Id", theId));
+
+                    myConnection.Open();
+
+                    using (SqlDataReader myReader = myCommand.ExecuteReader())
+                    {
+                        while (myReader.Read())
+                        {
+                            theTutor.Id = myReader.GetInt32(myReader.GetOrdinal("Id"));
+                            theTutor.TutorFirstName = myReader["TutorFirstName"].ToString();
+                            theTutor.TutorLastName = myReader["TutorLastName"].ToString();
+                            theTutor.Active = myReader.GetBoolean(myReader.GetOrdinal("Active"));
+                        }
+
+                        myConnection.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "An Error in TutorDB.GetList", MessageBoxButtons.OK);
+            }
+
+            return theTutor;
         }
     }
 }

@@ -49,9 +49,8 @@ namespace TimeTable.Forms
         
         private void evtFormLoad(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'databaseDataSet.spTutorSelectListByLastName' table. You can move, or remove it, as needed.
-
             clsFormPreperation.SetUpForm(this);
+
             this.DataList.DisplayMember = "TutorDisplayName";
             this.DataList.ValueMember = "Id";
             this.DataList.DataSource = clsTutor.GetList();

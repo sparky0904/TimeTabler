@@ -26,7 +26,7 @@ namespace TimeTable.AppLogic
 
                     myConnection.Open();
 
-                    using(SqlDataReader myReader = myCommand.ExecuteReader())
+                    using (SqlDataReader myReader = myCommand.ExecuteReader())
                     {
                         while (myReader.Read())
                         {
@@ -43,10 +43,83 @@ namespace TimeTable.AppLogic
                 }
             }
             catch (Exception ex)
-            {                
-               MessageBox.Show(ex.Message , "An Error in TutorDB.GetList", MessageBoxButtons.OK) ;
+            {
+                MessageBox.Show(ex.Message, "An Error in TutorDB.GetList", MessageBoxButtons.OK);
             }
+
             return myTutorList;
+        }
+
+        public static clsTutor GetSingleRecord(int theId)
+        {
+            string con = Properties.Settings.Default.DatabaseConnectionString;
+            clsTutor theTutor = new clsTutor();
+
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    SqlCommand myCommand = new SqlCommand("spTutorSelectTutorById", myConnection);
+                    myCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    myCommand.Parameters.Add(new SqlParameter("@Id", theId));
+
+                    myConnection.Open();
+
+                    using (SqlDataReader myReader = myCommand.ExecuteReader())
+                    {
+                        while (myReader.Read())
+                        {
+                            theTutor.Id = myReader.GetInt32(myReader.GetOrdinal("Id"));
+                            theTutor.TutorFirstName = myReader["TutorFirstName"].ToString();
+                            theTutor.TutorLastName = myReader["TutorLastName"].ToString();
+                            theTutor.Active = myReader.GetBoolean(myReader.GetOrdinal("Active"));
+                        }
+
+                        myConnection.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "An Error in TutorDB.GetSingleRecord", MessageBoxButtons.OK);
+            }
+
+            return theTutor;
+        }
+
+        public static int Save(clsTutor theTutor)
+        {
+            string con = Properties.Settings.Default.DatabaseConnectionString;
+
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    SqlCommand myCommand = new SqlCommand("spTutorInsertUpdateDelete", myConnection);
+
+                    myCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    myCommand.Parameters.Add(new SqlParameter("@Id", theTutor.Id));
+                    myCommand.Parameters.Add(new SqlParameter("@Active", theTutor.Active));
+                    myCommand.Parameters.Add(new SqlParameter("@WorkingPatternID", theTutor.WorkingPatternID));
+                    myCommand.Parameters.Add(new SqlParameter("@TutorLastName", theTutor.TutorLastName));
+                    myCommand.Parameters.Add(new SqlParameter("@TutorFirstName", theTutor.TutorFirstName));
+                    myCommand.Parameters.Add(new SqlParameter("@StatementType", "Update"));
+
+                    myConnection.Open();
+
+                    SqlDataReader myReader = myCommand.ExecuteReader();
+                    // TODO: is not updating to database onlu shows updates whne program is loaded, suggests cache
+
+                    myConnection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "An Error in TutorDB.GetSingleRecord", MessageBoxButtons.OK);
+                return (-1);
+            }
+
+            return (0);
         }
     }
 }

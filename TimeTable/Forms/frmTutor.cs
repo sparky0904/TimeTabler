@@ -15,7 +15,9 @@ namespace TimeTable.Forms
     public partial class frmTutor : Form
     {
         // Variables
-        public bool dirtyData = false;
+        bool dirtyData = false;
+        bool formLoaded = false;
+        int currentRecordId = 0;
 
         #region Methods
 
@@ -42,11 +44,65 @@ namespace TimeTable.Forms
             btnCancel.Enabled = theState;
             btnSave.Enabled = theState;
         }
-        
+
+        private void CheckIfShouldSaveData()
+        {
+            // check if dirty data flag is set
+            bool SaveRecord = false;
+
+            // As if to save data
+            if (dirtyData)
+            {
+                // If yes ask if sure
+                if (MessageBox.Show("Data has been changed, would you like to save changes?", "Data Changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    SaveRecord = true;
+                }
+            }
+
+            if (SaveRecord)
+            {
+                // Save Data
+            }
+            else
+            {
+                // If sure then Reload the data for current record
+                UpdateDataFields(clsTutor.GetSingleRecord(Convert.ToInt32(DataList.SelectedValue)));
+            }
+        }
+
+        private void DataChanged(object sender, EventArgs e)
+        {
+            SetDirtyData(true);
+        }
+
+        // Update the data fields based on a clsTutor object
+        private void UpdateDataFields(clsTutor theTutor)
+        {
+            _FirstName.Text = theTutor.TutorFirstName;
+            _LastName.Text = theTutor.TutorLastName;
+            _Active.Checked = theTutor.Active;
+
+            currentRecordId = theTutor.Id;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            clsTutor theTutor = new clsTutor();
+            theTutor.Id = currentRecordId;
+            theTutor.Active = this._Active.Checked;
+            theTutor.WorkingPatternID = 1;
+            theTutor.TutorLastName = this._LastName.Text;
+            theTutor.TutorFirstName = this._FirstName.Text;
+            theTutor.Save();
+
+            dirtyData = false;
+        }
+
         #endregion
 
         #region Event Handlers
-        
+
         private void evtFormLoad(object sender, EventArgs e)
         {
             clsFormPreperation.SetUpForm(this);
@@ -54,22 +110,12 @@ namespace TimeTable.Forms
             this.DataList.DisplayMember = "TutorDisplayName";
             this.DataList.ValueMember = "Id";
             this.DataList.DataSource = clsTutor.GetList();
+
+            dirtyData = false;
+            formLoaded = true;
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void DataChanged(object sender, EventArgs e)
-        {
-            SetDirtyData(true);
-        } 
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -78,7 +124,8 @@ namespace TimeTable.Forms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            // Reload the data for current record
+            // check if should save data
+            CheckIfShouldSaveData();
 
             // Reset dirty data flag
             SetDirtyData(false);
@@ -90,6 +137,22 @@ namespace TimeTable.Forms
         }
 
         #endregion
+
+        private void DataList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (formLoaded)
+            {
+                CheckIfShouldSaveData();
+            }
+
+            UpdateDataFields(clsTutor.GetSingleRecord(Convert.ToInt32(DataList.SelectedValue)));
+
+            SetButtonStateAtLoad();
+            dirtyData = false;
+
+        }
+
+ 
 
 
 

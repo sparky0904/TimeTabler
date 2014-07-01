@@ -87,6 +87,15 @@ namespace TimeTable.AppLogic
             return theTutor;
         }
 
+        private static void SetSQLParameters(clsTutor theTutor, SqlCommand myCommand)
+        {
+            myCommand.Parameters.Add(new SqlParameter("@Id", theTutor.Id));
+            myCommand.Parameters.Add(new SqlParameter("@Active", theTutor.Active));
+            myCommand.Parameters.Add(new SqlParameter("@WorkingPatternID", theTutor.WorkingPatternID));
+            myCommand.Parameters.Add(new SqlParameter("@TutorLastName", theTutor.TutorLastName));
+            myCommand.Parameters.Add(new SqlParameter("@TutorFirstName", theTutor.TutorFirstName));
+        }
+
         public static int Save(clsTutor theTutor)
         {
             string con = Properties.Settings.Default.DatabaseConnectionString;
@@ -95,31 +104,68 @@ namespace TimeTable.AppLogic
             {
                 using (SqlConnection myConnection = new SqlConnection(con))
                 {
+                    int rowsUpdated = 0;
+                    string theStatementType;
+
+                    if (theTutor.Id < 0)
+                    { theStatementType = "Insert"; }
+                    else
+                    { theStatementType = "Update"; }
+
                     SqlCommand myCommand = new SqlCommand("spTutorInsertUpdateDelete", myConnection);
-
                     myCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                    myCommand.Parameters.Add(new SqlParameter("@Id", theTutor.Id));
-                    myCommand.Parameters.Add(new SqlParameter("@Active", theTutor.Active));
-                    myCommand.Parameters.Add(new SqlParameter("@WorkingPatternID", theTutor.WorkingPatternID));
-                    myCommand.Parameters.Add(new SqlParameter("@TutorLastName", theTutor.TutorLastName));
-                    myCommand.Parameters.Add(new SqlParameter("@TutorFirstName", theTutor.TutorFirstName));
-                    myCommand.Parameters.Add(new SqlParameter("@StatementType", "Update"));
-
+                    SetSQLParameters(theTutor, myCommand);
+                    myCommand.Parameters.Add(new SqlParameter("@StatementType", theStatementType));
                     myConnection.Open();
-
-                    SqlDataReader myReader = myCommand.ExecuteReader();
-                    // TODO: is not updating to database onlu shows updates whne program is loaded, suggests cache
-
+                    rowsUpdated = myCommand.ExecuteNonQuery();
                     myConnection.Close();
+
+                    return (rowsUpdated);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "An Error in TutorDB.GetSingleRecord", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, "An Error in TutorDB.Save", MessageBoxButtons.OK);
                 return (-1);
             }
+        }
 
-            return (0);
+        
+
+        public static int Delete(int theId)
+        {
+            string con = Properties.Settings.Default.DatabaseConnectionString;
+
+            try
+            {
+                using (SqlConnection myConnection = new SqlConnection(con))
+                {
+                    int rowsUpdated = 0;
+                    clsTutor thetutor = new clsTutor();
+
+                    SqlCommand myCommand = new SqlCommand("spTutorInsertUpdateDelete", myConnection);
+
+                    myCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    thetutor.Id = theId;
+                    SetSQLParameters(thetutor, myCommand);
+
+                    myCommand.Parameters.Add(new SqlParameter("@StatementType", "Delete"));
+
+                    myConnection.Open();
+
+                    rowsUpdated = myCommand.ExecuteNonQuery();
+
+                    myConnection.Close();
+
+                    return (rowsUpdated);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "An Error in TutorDB.Delete", MessageBoxButtons.OK);
+                return (-1);
+            }
         }
     }
 }

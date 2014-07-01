@@ -11,11 +11,11 @@ namespace TimeTable.AppLogic
     {
         #region Variables
 
-        private int id;
-        private bool active;
-        private int workingPatternID;
-        private string tutorLastName;
-        private string tutorFirstName;
+        private int id = 0;
+        private bool active = true;
+        private int workingPatternID = 0;
+        private string tutorLastName = "";
+        private string tutorFirstName = "";
 
         public int Id
         {
@@ -73,6 +73,12 @@ namespace TimeTable.AppLogic
         public int Save()
         {
             return clsTutorDB.Save(this);
+        }
+
+        // Delete record
+        public static int Delete(int theID)
+        {
+            return clsTutorDB.Delete(theID);
         }
 
         #endregion

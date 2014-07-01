@@ -63,6 +63,7 @@ namespace TimeTable.Forms
             if (SaveRecord)
             {
                 // Save Data
+                SaveData();
             }
             else
             {
@@ -86,17 +87,47 @@ namespace TimeTable.Forms
             currentRecordId = theTutor.Id;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void RefreshDataList()
         {
+            formLoaded = false;
+            this.DataList.DataSource = clsTutor.GetList();
+            formLoaded = true;
+
+            //TODO: Make the select entry in the data list the one just amended or added, if deleted then the one below
+        }
+
+        private void SaveData()
+        {
+            int rowsUpdated = 0;
+
             clsTutor theTutor = new clsTutor();
             theTutor.Id = currentRecordId;
             theTutor.Active = this._Active.Checked;
             theTutor.WorkingPatternID = 1;
             theTutor.TutorLastName = this._LastName.Text;
-            theTutor.TutorFirstName = this._FirstName.Text;
-            theTutor.Save();
+            theTutor.TutorFirstName = this._FirstName.Text; 
+            rowsUpdated = theTutor.Save();
 
-            dirtyData = false;
+            RefreshDataList();
+
+            if (rowsUpdated < 1)
+            {
+                MessageBox.Show("Error in saving record.", "Error Saving record", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (rowsUpdated > 1)
+                {
+                    MessageBox.Show("More than one record was updated, please ring support.", "Error Saving record", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void blankFormFields()
+        {
+            this._Active.Checked = true;
+            this._FirstName.Text = "";
+            this._LastName.Text = "";
         }
 
         #endregion
@@ -113,13 +144,28 @@ namespace TimeTable.Forms
 
             dirtyData = false;
             formLoaded = true;
+            SetButtonStateAtLoad();
         }
 
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaveData();
+            dirtyData = false;
+            SetButtonStateAtLoad();
+        }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Are you sure you wish to delete this entry?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                clsTutor.Delete(currentRecordId);
+            }
 
+            dirtyData = false;
+            SetButtonStateAtLoad();
+
+            RefreshDataList();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -133,10 +179,11 @@ namespace TimeTable.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            blankFormFields();
+            SetDirtyData(true);
+            currentRecordId = -1;
+            this._FirstName.Focus();
         }
-
-        #endregion
 
         private void DataList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -147,15 +194,9 @@ namespace TimeTable.Forms
 
             UpdateDataFields(clsTutor.GetSingleRecord(Convert.ToInt32(DataList.SelectedValue)));
 
-            SetButtonStateAtLoad();
             dirtyData = false;
-
+            SetButtonStateAtLoad();
         }
-
- 
-
-
-
-
-    }
+        #endregion
+ }
 }

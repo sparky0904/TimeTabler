@@ -83,6 +83,8 @@ namespace TimeTable.Forms
             _FirstName.Text = theTutor.TutorFirstName;
             _LastName.Text = theTutor.TutorLastName;
             _Active.Checked = theTutor.Active;
+            _Created.Text = theTutor.CreatedDate.ToString();
+            _Modified.Text = theTutor.ModifiedDate.ToString();
 
             currentRecordId = theTutor.Id;
         }
@@ -198,5 +200,11 @@ namespace TimeTable.Forms
             SetButtonStateAtLoad();
         }
         #endregion
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
  }
 }

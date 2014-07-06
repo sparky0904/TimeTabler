@@ -73,6 +73,8 @@ namespace TimeTable.AppLogic
                             theTutor.TutorFirstName = myReader["TutorFirstName"].ToString();
                             theTutor.TutorLastName = myReader["TutorLastName"].ToString();
                             theTutor.Active = myReader.GetBoolean(myReader.GetOrdinal("Active"));
+                            theTutor.CreatedDate = myReader.GetDateTime(myReader.GetOrdinal("CreatedDate"));
+                            theTutor.ModifiedDate = myReader.GetDateTime(myReader.GetOrdinal("ModifiedDate"));
                         }
 
                         myConnection.Close();

@@ -18,6 +18,7 @@ namespace TimeTable
 
         // Set up the forms to be used in the program, will create them here they will be initalised as required
         public frmTutor frmTutor;
+        public frmWorkingPattern frmWorkingPattern;
 
         public MDIParent1()
         {
@@ -135,6 +136,16 @@ namespace TimeTable
                 frmTutor.MdiParent = this;
             }
             frmTutor.Show();
+        }
+
+        private void workingPatternsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmWorkingPattern == null)
+            {
+                frmWorkingPattern = new frmWorkingPattern();
+                frmWorkingPattern.MdiParent = this;
+            }
+            frmWorkingPattern.Show();
         }
     }
 }

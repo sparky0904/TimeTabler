@@ -61,20 +61,17 @@
   <ItemGroup>
     <Compile Include="AppLogic\clsTutor.cs" />
     <Compile Include="AppLogic\clsTutorDB.cs" />
-    <Compile Include="DatabaseDataSet.cs">
-      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="DatabaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmAbout.Designer.cs">
       <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmWorkingPattern.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmWorkingPattern.Designer.cs">
+      <DependentUpon>frmWorkingPattern.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MDIParent1.cs">
       <SubType>Form</SubType>
@@ -97,6 +94,9 @@
     <EmbeddedResource Include="Forms\frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmWorkingPattern.resx">
+      <DependentUpon>frmWorkingPattern.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MDIParent1.resx">
       <DependentUpon>MDIParent1.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,17 +112,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="DatabaseDataSet.xsc">
-      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DatabaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DatabaseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DatabaseDataSet.xss">
-      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\DataSources\TimeTable.AppLogic.clsTutorDB.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

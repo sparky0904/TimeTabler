@@ -57,6 +57,8 @@
             this.toolBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.tutorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,8 +85,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tutorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.workingPatternsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -325,16 +326,29 @@
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tutorsToolStripMenuItem,
+            this.workingPatternsToolStripMenuItem,
             this.toolStripSeparator10,
             this.optionsToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(48, 20);
             this.toolsMenu.Text = "&Tools";
             // 
+            // tutorsToolStripMenuItem
+            // 
+            this.tutorsToolStripMenuItem.Name = "tutorsToolStripMenuItem";
+            this.tutorsToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.tutorsToolStripMenuItem.Text = "Tutors";
+            this.tutorsToolStripMenuItem.Click += new System.EventHandler(this.tutorsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(162, 6);
+            // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
             // 
             // windowsMenu
@@ -538,17 +552,12 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // tutorsToolStripMenuItem
+            // workingPatternsToolStripMenuItem
             // 
-            this.tutorsToolStripMenuItem.Name = "tutorsToolStripMenuItem";
-            this.tutorsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.tutorsToolStripMenuItem.Text = "Tutors";
-            this.tutorsToolStripMenuItem.Click += new System.EventHandler(this.tutorsToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator10
-            // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(149, 6);
+            this.workingPatternsToolStripMenuItem.Name = "workingPatternsToolStripMenuItem";
+            this.workingPatternsToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.workingPatternsToolStripMenuItem.Text = "Working Patterns";
+            this.workingPatternsToolStripMenuItem.Click += new System.EventHandler(this.workingPatternsToolStripMenuItem_Click);
             // 
             // MDIParent1
             // 
@@ -631,6 +640,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripMenuItem tutorsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripMenuItem workingPatternsToolStripMenuItem;
     }
 }
 

@@ -16,6 +16,9 @@ namespace TimeTable.AppLogic
         private int workingPatternID = 0;
         private string tutorLastName = "";
         private string tutorFirstName = "";
+        private DateTime createdDate;
+        private DateTime modifiedDate;
+
 
         public int Id
         {
@@ -50,6 +53,18 @@ namespace TimeTable.AppLogic
         {
             get { return workingPatternID; }
             set { workingPatternID = value; }
+        }
+
+        public DateTime CreatedDate
+        {
+            get { return createdDate; }
+            set { createdDate = value; }
+        }
+
+        public DateTime ModifiedDate
+        {
+            get { return modifiedDate; }
+            set { modifiedDate = value; }
         }
 
         #endregion

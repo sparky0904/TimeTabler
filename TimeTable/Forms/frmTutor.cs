@@ -50,7 +50,7 @@ namespace TimeTable.Forms
             // check if dirty data flag is set
             bool SaveRecord = false;
 
-            // As if to save data
+            // Ask if to save data
             if (dirtyData)
             {
                 // If yes ask if sure

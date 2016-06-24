@@ -14,7 +14,9 @@ namespace TimeTable.AppLogic
         public static List<clsTutor> GetList()
         {
             List<clsTutor> myTutorList = new List<clsTutor>();
-            string con = Properties.Settings.Default.DatabaseConnectionString;
+            // string con = Properties.Settings.Default.DatabaseConnectionString;
+            string con = clsGlobalParameters.DatabaseConnectionString;
+
             clsTutor theTutor;
 
             try
@@ -52,7 +54,8 @@ namespace TimeTable.AppLogic
 
         public static clsTutor GetSingleRecord(int theId)
         {
-            string con = Properties.Settings.Default.DatabaseConnectionString;
+            // string con = Properties.Settings.Default.DatabaseConnectionString;
+            string con = clsGlobalParameters.DatabaseConnectionString;
             clsTutor theTutor = new clsTutor();
 
             try
@@ -100,7 +103,8 @@ namespace TimeTable.AppLogic
 
         public static int Save(clsTutor theTutor)
         {
-            string con = Properties.Settings.Default.DatabaseConnectionString;
+            // string con = Properties.Settings.Default.DatabaseConnectionString;
+            string con = clsGlobalParameters.DatabaseConnectionString;
 
             try
             {
@@ -132,11 +136,10 @@ namespace TimeTable.AppLogic
             }
         }
 
-        
-
         public static int Delete(int theId)
         {
-            string con = Properties.Settings.Default.DatabaseConnectionString;
+            // string con = Properties.Settings.Default.DatabaseConnectionString;
+            string con = clsGlobalParameters.DatabaseConnectionString;
 
             try
             {

@@ -9,12 +9,24 @@ namespace TimeTable.HelperClasses
     public static class clsGlobalParameters
     {
         // Connection String
-        private static string connectionString = "Data Source=Data\\Database.mdf;Integrated Security=True;Connect Timeout=30";
+        private static bool DebugModeEnabled = Properties.Settings.Default.DebugMode;
+        private static string connectionStringPart1 = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=";
+        private static string connectionStringPart2 = "\\Data\\Database.mdf;Integrated Security=True;Connect Timeout=30";
+        private static string Directory = "|DataDirectory|";
 
-        public static string ConnectionString
+
+        public static string DatabaseConnectionString
         {
             get
             {
+                string connectionString = string.Empty;
+
+                if (DebugModeEnabled)
+                {
+                    Directory = "D:\\My Documents\\GitHub\\TimeTabler\\TimeTable";
+                }
+
+                connectionString = connectionStringPart1 + Directory + connectionStringPart2;
                 return connectionString;
             }
         }

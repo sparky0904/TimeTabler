@@ -40,12 +40,12 @@
             this._LastName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this._FirstName = new System.Windows.Forms.TextBox();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this._Active = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
@@ -111,7 +111,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this._Modified);
-            this.groupBox1.Location = new System.Drawing.Point(10, 369);
+            this.groupBox1.Location = new System.Drawing.Point(6, 414);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(459, 84);
             this.groupBox1.TabIndex = 14;
@@ -179,6 +179,34 @@
             this._FirstName.TabIndex = 7;
             this._FirstName.TextChanged += new System.EventHandler(this.DataChanged);
             // 
+            // _Active
+            // 
+            this._Active.AutoSize = true;
+            this._Active.Location = new System.Drawing.Point(129, 92);
+            this._Active.Name = "_Active";
+            this._Active.Size = new System.Drawing.Size(15, 14);
+            this._Active.TabIndex = 3;
+            this._Active.UseVisualStyleBackColor = true;
+            this._Active.CheckStateChanged += new System.EventHandler(this.DataChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 89);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 19);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Active";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 19);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "First Name";
+            // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(464, 611);
@@ -208,34 +236,6 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // _Active
-            // 
-            this._Active.AutoSize = true;
-            this._Active.Location = new System.Drawing.Point(129, 92);
-            this._Active.Name = "_Active";
-            this._Active.Size = new System.Drawing.Size(15, 14);
-            this._Active.TabIndex = 3;
-            this._Active.UseVisualStyleBackColor = true;
-            this._Active.CheckStateChanged += new System.EventHandler(this.DataChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 89);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 19);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Active";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 19);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "First Name";
             // 
             // tabControl1
             // 

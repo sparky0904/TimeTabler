@@ -181,8 +181,13 @@ namespace TimeTable.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            blankFormFields();
-            SetDirtyData(true);
+            blankFormFields();           
+            SetDirtyData(false);
+            btnAdd.Enabled = false;
+            btnSave.Enabled = false;
+            btnDelete.Enabled = false;
+            btnCancel.Enabled = true;
+
             currentRecordId = -1;
             this._FirstName.Focus();
         }

@@ -18,9 +18,6 @@ namespace TimeTable
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-
-            //TODO: set the connection string to use the database in the project folder if running in debug mode
-
             // Load the inital Parent
             Application.Run(new MDIParent1());
         }

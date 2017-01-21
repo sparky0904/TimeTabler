@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="TimeTabler" id="e9a394c1" version="3.1.1">
+  <folder name="Business" id="84a33cc1" type="business">
+    <element xsi:type="archimate:BusinessRole" id="66562ff4" name="Business Role"/>
+    <element xsi:type="archimate:BusinessActor" id="fd7c9586" name="Manager"/>
+    <element xsi:type="archimate:BusinessEvent" id="3de97f96" name="Creates Timetable"/>
+    <element xsi:type="archimate:BusinessProcess" id="9dbe7274" name="Creates Time table"/>
+    <element xsi:type="archimate:Product" id="03a4607c" name="Time Table"/>
+  </folder>
+  <folder name="Application" id="7257122d" type="application">
+    <element xsi:type="archimate:ApplicationComponent" id="07ca5fcb" name="Time Tabler App"/>
+    <element xsi:type="archimate:ApplicationInteraction" id="957a2ba2" name="Application Interaction"/>
+  </folder>
+  <folder name="Technology" id="7108ed84" type="technology"/>
+  <folder name="Motivation" id="1c2d9e57" type="motivation"/>
+  <folder name="Implementation &amp; Migration" id="cf478464" type="implementation_migration"/>
+  <folder name="Connectors" id="621627a8" type="connectors"/>
+  <folder name="Relations" id="f4588d24" type="relations">
+    <element xsi:type="archimate:TriggeringRelationship" id="933ea8ae" source="fd7c9586" target="9dbe7274"/>
+    <element xsi:type="archimate:TriggeringRelationship" id="5e7f7f58" source="9dbe7274" target="07ca5fcb"/>
+    <element xsi:type="archimate:AssociationRelationship" id="01af8f7c" source="03a4607c" target="07ca5fcb"/>
+  </folder>
+  <folder name="Views" id="cf31ec49" type="diagrams">
+    <element xsi:type="archimate:ArchimateDiagramModel" id="f91c171d" name="High Level Process">
+      <child xsi:type="archimate:DiagramObject" id="6a8bf5f5" textAlignment="2" archimateElement="fd7c9586">
+        <bounds x="72" y="96" width="120" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="3163e112" source="6a8bf5f5" target="57f22730" relationship="933ea8ae"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="57f22730" textAlignment="2" targetConnections="3163e112" archimateElement="9dbe7274">
+        <bounds x="240" y="96" width="120" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="cd3c565f" source="57f22730" target="dc54c9b4" relationship="5e7f7f58"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="dc54c9b4" textAlignment="2" targetConnections="cd3c565f c47d80e8" archimateElement="07ca5fcb">
+        <bounds x="240" y="180" width="120" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="be85c19a" textAlignment="2" archimateElement="03a4607c">
+        <bounds x="408" y="180" width="120" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="c47d80e8" source="be85c19a" target="dc54c9b4" relationship="01af8f7c"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" id="be575f18" name="Application Logic"/>
+  </folder>
+</archimate:model>

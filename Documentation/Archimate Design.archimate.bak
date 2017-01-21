@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="TimeTabler" id="e9a394c1" version="3.1.1">
+  <folder name="Business" id="84a33cc1" type="business"/>
+  <folder name="Application" id="7257122d" type="application"/>
+  <folder name="Technology" id="7108ed84" type="technology"/>
+  <folder name="Motivation" id="1c2d9e57" type="motivation"/>
+  <folder name="Implementation &amp; Migration" id="cf478464" type="implementation_migration"/>
+  <folder name="Connectors" id="621627a8" type="connectors"/>
+  <folder name="Relations" id="f4588d24" type="relations"/>
+  <folder name="Views" id="cf31ec49" type="diagrams">
+    <element xsi:type="archimate:ArchimateDiagramModel" id="f91c171d" name="Default View"/>
+  </folder>
+</archimate:model>

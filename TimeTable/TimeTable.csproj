@@ -78,8 +78,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppLogic\clsClass.cs" />
+    <Compile Include="AppLogic\clsStudent.cs" />
+    <Compile Include="AppLogic\clsTimeTableEntry.cs" />
     <Compile Include="AppLogic\clsTutor.cs" />
     <Compile Include="AppLogic\clsTutorDB.cs" />
+    <Compile Include="UserControls\DayHourPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DayHourPicker.Designer.cs">
+      <DependentUpon>DayHourPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +140,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\DayHourPicker.resx">
+      <DependentUpon>DayHourPicker.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\TimeTable.AppLogic.clsTutorDB.datasource" />
     <None Include="Properties\Settings.settings">

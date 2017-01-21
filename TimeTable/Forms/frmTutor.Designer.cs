@@ -50,6 +50,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbWorkingPatternID = new System.Windows.Forms.ComboBox();
+            this.dayHourPicker1 = new TimeTable.DayHourPicker();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -249,6 +250,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dayHourPicker1);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.cmbWorkingPatternID);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
@@ -275,6 +277,14 @@
             this.cmbWorkingPatternID.Name = "cmbWorkingPatternID";
             this.cmbWorkingPatternID.Size = new System.Drawing.Size(265, 27);
             this.cmbWorkingPatternID.TabIndex = 0;
+            // 
+            // dayHourPicker1
+            // 
+            this.dayHourPicker1.Location = new System.Drawing.Point(21, 60);
+            this.dayHourPicker1.Margin = new System.Windows.Forms.Padding(4);
+            this.dayHourPicker1.Name = "dayHourPicker1";
+            this.dayHourPicker1.Size = new System.Drawing.Size(694, 283);
+            this.dayHourPicker1.TabIndex = 3;
             // 
             // frmTutor
             // 
@@ -330,5 +340,6 @@
         private System.Windows.Forms.Label _Created;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox1;
+        private DayHourPicker dayHourPicker1;
     }
 }

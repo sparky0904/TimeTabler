@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 
 namespace TimeTable.AppLogic
 {
-    class clsClass
+    class clsSubject
     {
-
         #region Properties
-
-        private List<clsStudent> students;
 
         private int id;
         private string name;
         private string description;
-        private int subjectID;
+        private int departmentID;
 
         private DateTime createdTimestamp;
         private DateTime modifiedTimestamp;
@@ -36,7 +33,7 @@ namespace TimeTable.AppLogic
             {
                 id = value;
             }
-        }     
+        }
 
         public DateTime CreatedTimestamp
         {
@@ -90,23 +87,21 @@ namespace TimeTable.AppLogic
             }
         }
 
-        public int SubjectID
+        public int DepartmentID
         {
             get
             {
-                return subjectID;
+                return departmentID;
             }
 
             set
             {
-                subjectID = value;
+                departmentID = value;
             }
         }
 
         #endregion Public Accessors
 
         #endregion
-
-
     }
 }

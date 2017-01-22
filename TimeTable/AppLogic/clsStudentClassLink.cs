@@ -6,18 +6,13 @@ using System.Threading.Tasks;
 
 namespace TimeTable.AppLogic
 {
-    class clsClass
+    class clsStudentClassLink // This class links the students to the classes they are in
     {
-
         #region Properties
 
-        private List<clsStudent> students;
-
         private int id;
-        private string name;
-        private string description;
-        private int subjectID;
-
+        private int studentID;
+        private int classID;
         private DateTime createdTimestamp;
         private DateTime modifiedTimestamp;
         private int userCreatedID;
@@ -25,7 +20,33 @@ namespace TimeTable.AppLogic
 
         #region Public Accessors
 
-        public int Id
+        public int StudentID
+        {
+            get
+            {
+                return studentID;
+            }
+
+            set
+            {
+                studentID = value;
+            }
+        }
+
+        public int ClassID
+        {
+            get
+            {
+                return classID;
+            }
+
+            set
+            {
+                classID = value;
+            }
+        }
+
+        public int ID
         {
             get
             {
@@ -35,19 +56,6 @@ namespace TimeTable.AppLogic
             set
             {
                 id = value;
-            }
-        }     
-
-        public DateTime CreatedTimestamp
-        {
-            get
-            {
-                return createdTimestamp;
-            }
-
-            set
-            {
-                createdTimestamp = value;
             }
         }
 
@@ -90,23 +98,22 @@ namespace TimeTable.AppLogic
             }
         }
 
-        public int SubjectID
+        public DateTime CreatedTimestamp
         {
             get
             {
-                return subjectID;
+                return createdTimestamp;
             }
 
             set
             {
-                subjectID = value;
+                createdTimestamp = value;
             }
         }
 
-        #endregion Public Accessors
-
         #endregion
 
+        #endregion
 
     }
 }

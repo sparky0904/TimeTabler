@@ -1,22 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TimeTable.AppLogic
 {
-    class clsClass
+    internal class clsAcademicYear
     {
-
         #region Properties
 
-        private List<clsStudent> students;
-
         private int id;
-        private string name;
         private string description;
-        private int subjectID;
+        private DateTime firstDayOfYear;
 
         private DateTime createdTimestamp;
         private DateTime modifiedTimestamp;
@@ -36,7 +28,33 @@ namespace TimeTable.AppLogic
             {
                 id = value;
             }
-        }     
+        }
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                description = value;
+            }
+        }
+
+        public DateTime FirstDayOfYear
+        {
+            get
+            {
+                return firstDayOfYear;
+            }
+
+            set
+            {
+                firstDayOfYear = value;
+            }
+        }
 
         public DateTime CreatedTimestamp
         {
@@ -90,23 +108,8 @@ namespace TimeTable.AppLogic
             }
         }
 
-        public int SubjectID
-        {
-            get
-            {
-                return subjectID;
-            }
-
-            set
-            {
-                subjectID = value;
-            }
-        }
-
         #endregion Public Accessors
 
-        #endregion
-
-
+        #endregion Properties
     }
 }

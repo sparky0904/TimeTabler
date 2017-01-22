@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TimeTable.HelperClasses;
 using System.Windows.Forms;
+using TimeTable.HelperClasses;
 
 namespace TimeTable.AppLogic
 {
     public static class clsTimeTableEntryDB
     {
-        static string DBConnectionString = clsGlobalParameters.DatabaseConnectionString;
+        private static string DBConnectionString = clsGlobalParameters.DatabaseConnectionString;
 
         public static List<clsTimeTableEntry> GetList()
         {
@@ -39,7 +36,7 @@ namespace TimeTable.AppLogic
                             theTimeTableEntry = new clsTimeTableEntry();
                             theTimeTableEntry.ID = myReader.GetInt32(myReader.GetOrdinal("ID"));
                             //theTimeTableEntry.TutorFirstName = myReader["TutorFirstName"].ToString();
-                            
+
                             myTimeTableEntry.Add(theTimeTableEntry);
                         }
                         myConnection.Close();
@@ -98,8 +95,8 @@ namespace TimeTable.AppLogic
         private static void SetSQLParameters(clsTimeTableEntry theTimeTableEntry, SqlCommand myCommand)
         {
             myCommand.Parameters.Add(new SqlParameter("@Id", theTimeTableEntry.ID));
-           // myCommand.Parameters.Add(new SqlParameter("@Active", theTutor.Active));
-           // myCommand.Parameters.Add(new SqlParameter("@WorkingPatternID", theTutor.WorkingPatternID));
+            // myCommand.Parameters.Add(new SqlParameter("@Active", theTutor.Active));
+            // myCommand.Parameters.Add(new SqlParameter("@WorkingPatternID", theTutor.WorkingPatternID));
             //myCommand.Parameters.Add(new SqlParameter("@TutorLastName", theTutor.TutorLastName));
             //myCommand.Parameters.Add(new SqlParameter("@TutorFirstName", theTutor.TutorFirstName));
         }

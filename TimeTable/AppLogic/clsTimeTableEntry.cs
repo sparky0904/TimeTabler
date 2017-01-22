@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TimeTable.AppLogic
 {
@@ -13,15 +10,12 @@ namespace TimeTable.AppLogic
         // private
         private int id = 0; // ID for this record
 
-        // Information requires to create timetable
+        // Information requires to create timetable, held in database
         private int classID; // Class ID
+
         private DateTime startTime = DateTime.MinValue;
         private DateTime endTime = DateTime.MinValue;
-
-        // Data to maintain the timetable
         private int roomID; // Room ID
-
-        // Record management data
         private DateTime createdTimestamp = DateTime.Now;
         private DateTime modifieldTimestamp = DateTime.Now;
         private int userCreated = 0;
@@ -29,6 +23,7 @@ namespace TimeTable.AppLogic
 
         // Reference data - set when object is created
         private int[] students; // Students in the class, program ID of the student used to lookup student
+
         private int tutorID;   // Tutor ID
         private int classSize = 0; // Size of the class to check against room size
 
@@ -37,7 +32,7 @@ namespace TimeTable.AppLogic
         private clsRoom theRoom;
 
         // Public accessors
-        
+
         public int ID
         {
             get { return id; }
@@ -49,13 +44,12 @@ namespace TimeTable.AppLogic
             get { return classID; }
             set { classID = value; }
         }
-        
+
         public DateTime StartTime
         {
             get { return startTime; }
             set { startTime = value; }
         }
-        
 
         public DateTime EndTime
         {
@@ -80,6 +74,7 @@ namespace TimeTable.AppLogic
             get { return modifieldTimestamp; }
             set { modifieldTimestamp = value; }
         }
+
         public int UserCreated
         {
             get { return userCreated; }
@@ -92,7 +87,7 @@ namespace TimeTable.AppLogic
             set { userModified = value; }
         }
 
-        #endregion
+        #endregion Properites
 
         #region Methods
 
@@ -120,6 +115,6 @@ namespace TimeTable.AppLogic
             return clsTimeTableEntryDB.Delete(theID);
         }
 
-        #endregion
+        #endregion Methods
     }
 }

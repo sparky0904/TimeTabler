@@ -8,5 +8,13 @@ namespace TimeTable.AppLogic
 {
     class clsClass
     {
+
+        #region Properties
+
+        private clsStudent[] students;
+
+        #endregion
+
+
     }
 }

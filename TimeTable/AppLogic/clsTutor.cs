@@ -9,7 +9,7 @@ namespace TimeTable.AppLogic
 {
     public class clsTutor
     {
-        #region Variables
+        #region Properties
 
         private int id = 0;
         private bool active = true;

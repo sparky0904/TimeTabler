@@ -177,6 +177,8 @@ namespace TimeTable.Forms
 
             // Reset dirty data flag
             SetDirtyData(false);
+
+            //TODO: BUG: When clikcing cancel on a Addnew screen returns back to record seleteced however delete button is not enabled 
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

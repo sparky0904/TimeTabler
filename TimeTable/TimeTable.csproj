@@ -63,7 +63,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -79,9 +79,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppLogic\clsClass.cs" />
+    <Compile Include="AppLogic\clsParameters.cs" />
+    <Compile Include="AppLogic\clsParametersDB.cs" />
+    <Compile Include="AppLogic\clsRoom.cs" />
     <Compile Include="AppLogic\clsStudent.cs" />
     <Compile Include="AppLogic\clsTimeTableEntry.cs" />
     <Compile Include="AppLogic\clsTutor.cs" />
+    <Compile Include="AppLogic\clsTimeTableEntryDB.cs" />
     <Compile Include="AppLogic\clsTutorDB.cs" />
     <Compile Include="UserControls\DayHourPicker.cs">
       <SubType>UserControl</SubType>

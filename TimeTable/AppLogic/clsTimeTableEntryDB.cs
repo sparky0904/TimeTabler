@@ -9,25 +9,25 @@ using System.Windows.Forms;
 
 namespace TimeTable.AppLogic
 {
-    public static class clsTutorDB
+    public static class clsTimeTableEntryDB
     {
         static string DBConnectionString = clsGlobalParameters.DatabaseConnectionString;
 
-        public static List<clsTutor> GetList()
+        public static List<clsTimeTableEntry> GetList()
         {
-            List<clsTutor> myTutorList = new List<clsTutor>();
+            List<clsTimeTableEntry> myTimeTableEntry = new List<clsTimeTableEntry>();
             // string con = Properties.Settings.Default.DatabaseConnectionString;
             //string con = clsGlobalParameters.DatabaseConnectionString;
 
             string con = DBConnectionString;
 
-            clsTutor theTutor;
+            clsTimeTableEntry theTimeTableEntry;
 
             try
             {
                 using (SqlConnection myConnection = new SqlConnection(con))
                 {
-                    SqlCommand myCommand = new SqlCommand("spTutorSelectListByLastName", myConnection);
+                    SqlCommand myCommand = new SqlCommand("spTimeTableEntrySelectListByLastName", myConnection);
                     myCommand.CommandType = System.Data.CommandType.StoredProcedure;
 
                     myConnection.Open();
@@ -36,13 +36,11 @@ namespace TimeTable.AppLogic
                     {
                         while (myReader.Read())
                         {
-                            theTutor = new clsTutor();
-
-                            theTutor.Id = myReader.GetInt32(myReader.GetOrdinal("Id"));
-                            theTutor.TutorFirstName = myReader["TutorFirstName"].ToString();
-                            theTutor.TutorLastName = myReader["TutorLastName"].ToString();
-
-                            myTutorList.Add(theTutor);
+                            theTimeTableEntry = new clsTimeTableEntry();
+                            theTimeTableEntry.ID = myReader.GetInt32(myReader.GetOrdinal("ID"));
+                            //theTimeTableEntry.TutorFirstName = myReader["TutorFirstName"].ToString();
+                            
+                            myTimeTableEntry.Add(theTimeTableEntry);
                         }
                         myConnection.Close();
                     }
@@ -50,25 +48,25 @@ namespace TimeTable.AppLogic
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "An Error in TutorDB.GetList", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, "An Error in TimeTableEntryDB.GetList", MessageBoxButtons.OK);
             }
 
-            return myTutorList;
+            return myTimeTableEntry;
         }
 
-        public static clsTutor GetSingleRecord(int theId)
+        public static clsTimeTableEntry GetSingleRecord(int theId)
         {
             // string con = Properties.Settings.Default.DatabaseConnectionString;
             // string con = clsGlobalParameters.DatabaseConnectionString;
             string con = DBConnectionString;
 
-            clsTutor theTutor = new clsTutor();
+            clsTimeTableEntry theTimeTableEntry = new clsTimeTableEntry();
 
             try
             {
                 using (SqlConnection myConnection = new SqlConnection(con))
                 {
-                    SqlCommand myCommand = new SqlCommand("spTutorSelectTutorById", myConnection);
+                    SqlCommand myCommand = new SqlCommand("spTimeTableEntrySelectTimeTableEntryById", myConnection);
                     myCommand.CommandType = System.Data.CommandType.StoredProcedure;
                     myCommand.Parameters.Add(new SqlParameter("@Id", theId));
 
@@ -78,12 +76,11 @@ namespace TimeTable.AppLogic
                     {
                         while (myReader.Read())
                         {
-                            theTutor.Id = myReader.GetInt32(myReader.GetOrdinal("Id"));
-                            theTutor.TutorFirstName = myReader["TutorFirstName"].ToString();
-                            theTutor.TutorLastName = myReader["TutorLastName"].ToString();
-                            theTutor.Active = myReader.GetBoolean(myReader.GetOrdinal("Active"));
-                            theTutor.CreatedDate = myReader.GetDateTime(myReader.GetOrdinal("CreatedDate"));
-                            theTutor.ModifiedDate = myReader.GetDateTime(myReader.GetOrdinal("ModifiedDate"));
+                            theTimeTableEntry.ID = myReader.GetInt32(myReader.GetOrdinal("ID"));
+                            //theTimeTableEntry.TutorFirstName = myReader["TutorFirstName"].ToString();
+                            //theTimeTableEntry.Active = myReader.GetBoolean(myReader.GetOrdinal("Active"));
+                            theTimeTableEntry.CreatedTimestamp = myReader.GetDateTime(myReader.GetOrdinal("CreatedTimestamp"));
+                            theTimeTableEntry.ModifieldTimestamp = myReader.GetDateTime(myReader.GetOrdinal("ModifiedTimestamp"));
                         }
 
                         myConnection.Close();
@@ -92,22 +89,22 @@ namespace TimeTable.AppLogic
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "An Error in TutorDB.GetSingleRecord", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, "An Error in TimeTableEntryDB.GetSingleRecord", MessageBoxButtons.OK);
             }
 
-            return theTutor;
+            return theTimeTableEntry;
         }
 
-        private static void SetSQLParameters(clsTutor theTutor, SqlCommand myCommand)
+        private static void SetSQLParameters(clsTimeTableEntry theTimeTableEntry, SqlCommand myCommand)
         {
-            myCommand.Parameters.Add(new SqlParameter("@Id", theTutor.Id));
-            myCommand.Parameters.Add(new SqlParameter("@Active", theTutor.Active));
-            myCommand.Parameters.Add(new SqlParameter("@WorkingPatternID", theTutor.WorkingPatternID));
-            myCommand.Parameters.Add(new SqlParameter("@TutorLastName", theTutor.TutorLastName));
-            myCommand.Parameters.Add(new SqlParameter("@TutorFirstName", theTutor.TutorFirstName));
+            myCommand.Parameters.Add(new SqlParameter("@Id", theTimeTableEntry.ID));
+           // myCommand.Parameters.Add(new SqlParameter("@Active", theTutor.Active));
+           // myCommand.Parameters.Add(new SqlParameter("@WorkingPatternID", theTutor.WorkingPatternID));
+            //myCommand.Parameters.Add(new SqlParameter("@TutorLastName", theTutor.TutorLastName));
+            //myCommand.Parameters.Add(new SqlParameter("@TutorFirstName", theTutor.TutorFirstName));
         }
 
-        public static int Save(clsTutor theTutor)
+        public static int Save(clsTimeTableEntry theTimeTableEntry)
         {
             // string con = Properties.Settings.Default.DatabaseConnectionString;
             //string con = clsGlobalParameters.DatabaseConnectionString;
@@ -120,14 +117,14 @@ namespace TimeTable.AppLogic
                     int rowsUpdated = 0;
                     string theStatementType;
 
-                    if (theTutor.Id < 0)
+                    if (theTimeTableEntry.ID < 0)
                     { theStatementType = "Insert"; }
                     else
                     { theStatementType = "Update"; }
 
-                    SqlCommand myCommand = new SqlCommand("spTutorInsertUpdateDelete", myConnection);
+                    SqlCommand myCommand = new SqlCommand("spTimeTableEntryInsertUpdateDelete", myConnection);
                     myCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                    SetSQLParameters(theTutor, myCommand);
+                    SetSQLParameters(theTimeTableEntry, myCommand);
                     myCommand.Parameters.Add(new SqlParameter("@StatementType", theStatementType));
                     myConnection.Open();
                     rowsUpdated = myCommand.ExecuteNonQuery();
@@ -138,7 +135,7 @@ namespace TimeTable.AppLogic
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "An Error in TutorDB.Save", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, "An Error in TimeTableEntryDB.Save", MessageBoxButtons.OK);
                 return (-1);
             }
         }
@@ -154,21 +151,17 @@ namespace TimeTable.AppLogic
                 using (SqlConnection myConnection = new SqlConnection(con))
                 {
                     int rowsUpdated = 0;
-                    clsTutor thetutor = new clsTutor();
+                    clsTimeTableEntry theTimeTableEntry = new clsTimeTableEntry();
 
-                    SqlCommand myCommand = new SqlCommand("spTutorInsertUpdateDelete", myConnection);
-
+                    SqlCommand myCommand = new SqlCommand("spTimeTableEntryInsertUpdateDelete", myConnection);
                     myCommand.CommandType = System.Data.CommandType.StoredProcedure;
 
-                    thetutor.Id = theId;
-                    SetSQLParameters(thetutor, myCommand);
-
+                    theTimeTableEntry.ID = theId;
+                    SetSQLParameters(theTimeTableEntry, myCommand);
                     myCommand.Parameters.Add(new SqlParameter("@StatementType", "Delete"));
 
                     myConnection.Open();
-
                     rowsUpdated = myCommand.ExecuteNonQuery();
-
                     myConnection.Close();
 
                     return (rowsUpdated);
@@ -176,7 +169,7 @@ namespace TimeTable.AppLogic
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "An Error in TutorDB.Delete", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, "An Error in TimeTableEntryDB.Delete", MessageBoxButtons.OK);
                 return (-1);
             }
         }

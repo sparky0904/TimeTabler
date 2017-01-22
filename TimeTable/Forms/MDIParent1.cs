@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TimeTable.HelperClasses;
 using TimeTable.Forms;
+using TimeTable.AppLogic;
 
 namespace TimeTable
 {
@@ -120,6 +121,9 @@ namespace TimeTable
             this.Width = 1024;
             this.Height = 800;
             CenterToScreen();
+
+            // Load the paramaters from the database
+            //clsParameters theParameteres = clsParameters.GetSingleRecord(1);
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace TimeTable.AppLogic
 {
-    class clsDepartment
+    public class clsDepartment
     {
         #region Properties
 
-        private int id;
-        private string name;
-        private string description;
+        private int id = 0;
+        private string name = "";
+        private string description = "";
 
         private DateTime createdTimestamp;
         private DateTime modifiedTimestamp;
@@ -21,7 +21,7 @@ namespace TimeTable.AppLogic
 
         #region Public Accessors
 
-        public int Id
+        public int ID
         {
             get
             {
@@ -77,16 +77,70 @@ namespace TimeTable.AppLogic
         {
             get
             {
-                return UserModifiedID;
+                return userModifiedID;
             }
 
             set
             {
-                UserModifiedID = value;
+                userModifiedID = value;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                description = value;
             }
         }
 
         #endregion Public Accessors
+
+        #endregion
+
+        #region Methods
+
+        // Return a list of Departments, to be used in a list box
+        public static List<clsDepartment> GetList()
+        {
+            return clsDepartmentDB.GetList();
+        }
+
+        // Retrieve a single Record
+        public static clsDepartment GetSingleRecord(int theId)
+        {
+            return clsDepartmentDB.GetSingleRecord(theId);
+        }
+
+        // Save
+        public int Save()
+        {
+            return clsDepartmentDB.Save(this);
+        }
+
+        // Delete record
+        public static int Delete(int theID)
+        {
+            return clsDepartmentDB.Delete(theID);
+        }
 
         #endregion
     }

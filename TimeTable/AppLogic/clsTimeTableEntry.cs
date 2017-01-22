@@ -7,12 +7,9 @@ namespace TimeTable.AppLogic
     {
         #region Properites
 
-        // private
-        private int id = 0; // ID for this record
-
         // Information requires to create timetable, held in database
+        private int id = 0; // ID for this record
         private int classID; // Class ID
-
         private DateTime startTime = DateTime.MinValue;
         private DateTime endTime = DateTime.MinValue;
         private int roomID; // Room ID
@@ -31,7 +28,7 @@ namespace TimeTable.AppLogic
         private clsClass theClass;
         private clsRoom theRoom;
 
-        // Public accessors
+        #region  Public accessors
 
         public int ID
         {
@@ -86,6 +83,7 @@ namespace TimeTable.AppLogic
             get { return userModified; }
             set { userModified = value; }
         }
+        #endregion
 
         #endregion Properites
 

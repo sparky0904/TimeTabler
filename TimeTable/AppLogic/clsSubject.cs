@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace TimeTable.AppLogic
 {
-    class clsSubject
+    public class clsSubject
     {
         #region Properties
 
-        private int id;
-        private string name;
-        private string description;
-        private int departmentID;
+        private int id = 0;
+        private string name = "";
+        private string description = "";
+        private int departmentID = 0;
 
-        private DateTime createdTimestamp;
-        private DateTime modifiedTimestamp;
-        private int userCreatedID;
-        private int userModifiedID;
+        private DateTime createdTimestamp = DateTime.MinValue;
+        private DateTime modifiedTimestamp = DateTime.MinValue;
+        private int userCreatedID = -1;
+        private int userModifiedID = -1;
 
         #region Public Accessors
 
-        public int Id
+        public int ID
         {
             get
             {
@@ -100,8 +100,63 @@ namespace TimeTable.AppLogic
             }
         }
 
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                description = value;
+            }
+        }
+
         #endregion Public Accessors
 
         #endregion
+
+        #region Methods
+
+        // Return a list of Subjects, to be used in a list box
+        public static List<clsSubject> GetList()
+        {
+            return clsSubjectDB.GetList();
+        }
+
+        // Retrieve a single Record
+        public static clsSubject GetSingleRecord(int theId)
+        {
+            return clsSubjectDB.GetSingleRecord(theId);
+        }
+
+        // Save
+        public int Save()
+        {
+            return clsSubjectDB.Save(this);
+        }
+
+        // Delete record
+        public static int Delete(int theID)
+        {
+            return clsSubjectDB.Delete(theID);
+        }
+
+        #endregion
+
     }
 }

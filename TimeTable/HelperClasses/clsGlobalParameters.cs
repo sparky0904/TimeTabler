@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TimeTable.AppLogic;
+﻿using TimeTable.AppLogic;
 
 namespace TimeTable.HelperClasses
 {
@@ -11,11 +6,12 @@ namespace TimeTable.HelperClasses
     {
         // Connection String
         private static bool DebugModeEnabled = Properties.Settings.Default.DebugMode;
+
         private static string connectionStringPart1 = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=";
         private static string connectionStringPart2 = "\\Data\\Database.mdf;Integrated Security=True;Connect Timeout=30";
         private static string Directory = "|DataDirectory|";
+        private static int userID = -1;
 
-        private static int minutesBetweenClass;
 
         // Load the paramaters from the database
         public static clsParameters theParameteres = clsParameters.GetSingleRecord(1);
@@ -36,15 +32,22 @@ namespace TimeTable.HelperClasses
             }
         }
 
+        public static int UserID
+        {
+            get
+            {
+                return userID;
+            }
+
+            set
+            {
+                userID = value;
+            }
+        }
+
         // Constructor for the class, It is called automatically before the first instance is created or any static members are referenced.
         static clsGlobalParameters()
         {
-            
         }
-
     }
-
-
-
 }
-

@@ -10,47 +10,13 @@ namespace TimeTable.AppLogic
     {
         #region Properties
 
-        private int id;
-
-        public int ID
-        {
-            get { return id; }
-            set { id = value; }
-        }
-
-        private DateTime defaultOpeningTime;
-
-        public DateTime DefaultOpeningTime
-        {
-            get { return defaultOpeningTime; }
-            set { defaultOpeningTime = value; }
-        }
-
-        private DateTime defaultClosingTime;
-
-        public DateTime DefaultClosingTime
-        {
-            get { return defaultClosingTime; }
-            set { defaultClosingTime = value; }
-        }
-
-        private int defaultDaysOpen;
-
-        public int  DefaultDaysOpen
-        {
-            get { return defaultDaysOpen; }
-            set { defaultDaysOpen = value; }
-        }
-
-        private int defaultTimeBetweenClasses;
-
-        public int DefaultTimeBetweenClasses
-        {
-            get { return defaultTimeBetweenClasses; }
-            set { defaultTimeBetweenClasses = value; }
-        }
-
         private DateTime createdDate;
+        private DateTime defaultClosingTime;
+        private int defaultDaysOpen;
+        private DateTime defaultOpeningTime;
+        private int defaultTimeBetweenClasses;
+        private int id;
+        private DateTime modifiedDate;
 
         public DateTime CreatedDate
         {
@@ -58,8 +24,35 @@ namespace TimeTable.AppLogic
             set { createdDate = value; }
         }
 
-        private DateTime modifiedDate;
+        public DateTime DefaultClosingTime
+        {
+            get { return defaultClosingTime; }
+            set { defaultClosingTime = value; }
+        }
 
+        public int DefaultDaysOpen
+        {
+            get { return defaultDaysOpen; }
+            set { defaultDaysOpen = value; }
+        }
+
+        public DateTime DefaultOpeningTime
+        {
+            get { return defaultOpeningTime; }
+            set { defaultOpeningTime = value; }
+        }
+
+        public int DefaultTimeBetweenClasses
+        {
+            get { return defaultTimeBetweenClasses; }
+            set { defaultTimeBetweenClasses = value; }
+        }
+
+        public int ID
+        {
+            get { return id; }
+            set { id = value; }
+        }
         public DateTime ModifiedDate
         {
             get { return modifiedDate; }

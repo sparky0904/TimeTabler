@@ -19,6 +19,7 @@ namespace TimeTable
 
         // Set up the forms to be used in the program, will create them here they will be initalised as required
         public frmTutor frmTutor;
+        public frmDepartment frmDepartment;
         public frmWorkingPattern frmWorkingPattern;
 
         public MDIParent1()
@@ -150,6 +151,16 @@ namespace TimeTable
                 frmWorkingPattern.MdiParent = this;
             }
             frmWorkingPattern.Show();
+        }
+
+        private void DepartmentMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmDepartment == null)
+            {
+                frmDepartment = new frmDepartment();
+                frmDepartment.MdiParent = this;
+            }
+            frmDepartment.Show();
         }
     }
 }

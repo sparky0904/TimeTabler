@@ -10,14 +10,15 @@ using System.Windows.Forms;
 using TimeTable.HelperClasses;
 using TimeTable.AppLogic;
 
-namespace TimeTable.Forms
+namespace TimeTable.Forms.Admin
 {
     public partial class frmDepartment : Form
     {
         // Variables
-        bool dirtyData = false;
-        bool formLoaded = false;
-        int currentRecordId = 0;
+        private bool dirtyData = false;
+
+        private bool formLoaded = false;
+        private int currentRecordId = 0;
 
         #region Methods
 
@@ -29,7 +30,7 @@ namespace TimeTable.Forms
             SetButtonStateAtLoad();
         }
 
-        void SetButtonStateAtLoad()
+        private void SetButtonStateAtLoad()
         {
             btnAdd.Enabled = true;
             btnSave.Enabled = false;
@@ -37,7 +38,7 @@ namespace TimeTable.Forms
             btnCancel.Enabled = false;
         }
 
-        void SetDirtyData(bool theState)
+        private void SetDirtyData(bool theState)
         {
             dirtyData = theState;
             btnAdd.Enabled = !theState;
@@ -103,8 +104,8 @@ namespace TimeTable.Forms
 
             clsDepartment theDepartment = new clsDepartment();
             theDepartment.ID = currentRecordId;
-            theDepartment.Description= this._Description.Text;
-            theDepartment.Name = this._Name.Text; 
+            theDepartment.Description = this._Description.Text;
+            theDepartment.Name = this._Name.Text;
             rowsUpdated = theDepartment.Save();
 
             RefreshDataList();
@@ -128,7 +129,7 @@ namespace TimeTable.Forms
             this._Description.Text = "";
         }
 
-        #endregion
+        #endregion Methods
 
         #region Event Handlers
 
@@ -144,7 +145,6 @@ namespace TimeTable.Forms
             formLoaded = true;
             SetButtonStateAtLoad();
         }
-
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -174,12 +174,12 @@ namespace TimeTable.Forms
             // Reset dirty data flag
             SetDirtyData(false);
 
-            //TODO: BUG: When clikcing cancel on a Addnew screen returns back to record seleteced however delete button is not enabled 
+            //TODO: BUG: When clikcing cancel on a Addnew screen returns back to record seleteced however delete button is not enabled
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            blankFormFields();           
+            blankFormFields();
             SetDirtyData(false);
             btnAdd.Enabled = false;
             btnSave.Enabled = false;
@@ -202,6 +202,7 @@ namespace TimeTable.Forms
             dirtyData = false;
             SetButtonStateAtLoad();
         }
-        #endregion
+
+        #endregion Event Handlers
     }
 }

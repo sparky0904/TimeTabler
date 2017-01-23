@@ -1,4 +1,5 @@
 ﻿using TimeTable.AppLogic;
+using System;
 
 namespace TimeTable.HelperClasses
 {
@@ -12,7 +13,6 @@ namespace TimeTable.HelperClasses
         private static string Directory = "|DataDirectory|";
         private static int userID = -1;
 
-
         // Load the paramaters from the database
         public static clsParameters theParameteres = clsParameters.GetSingleRecord(1);
 
@@ -24,7 +24,14 @@ namespace TimeTable.HelperClasses
 
                 if (DebugModeEnabled)
                 {
-                    Directory = "D:\\My Documents\\GitHub\\TimeTabler\\TimeTable";
+                    if (Environment.MachineName == "WW025555")
+                    {
+                        Directory = "C:\\Users\\mark.taylor\\Source\\Repos\\TimeTabler\\TimeTable";
+                    }
+                    else
+                    {
+                        Directory = "D:\\My Documents\\GitHub\\TimeTabler\\TimeTable";
+                    }
                 }
 
                 connectionString = connectionStringPart1 + Directory + connectionStringPart2;

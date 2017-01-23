@@ -1,4 +1,4 @@
-﻿namespace TimeTable.Forms
+﻿namespace TimeTable.Forms.Admin
 {
     partial class frmDepartment
     {

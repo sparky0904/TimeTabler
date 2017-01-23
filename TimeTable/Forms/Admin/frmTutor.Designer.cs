@@ -1,4 +1,4 @@
-﻿namespace TimeTable.Forms
+﻿namespace TimeTable.Forms.Admin
 {
     partial class frmTutor
     {
@@ -104,7 +104,6 @@
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "Details";
             this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // groupBox1
             // 

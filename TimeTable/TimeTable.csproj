@@ -95,11 +95,23 @@
     <Compile Include="AppLogic\clsDepartmentDB.cs" />
     <Compile Include="AppLogic\clsTutorDB.cs" />
     <Compile Include="AppLogic\clsStudentClassLink.cs" />
-    <Compile Include="Forms\frmDepartment.cs">
+    <Compile Include="Forms\Admin\baseAdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmDepartment.Designer.cs">
+    <Compile Include="Forms\Admin\baseAdminForm.Designer.cs">
+      <DependentUpon>baseAdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\frmDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\frmDepartment.Designer.cs">
       <DependentUpon>frmDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\frmSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\frmSubject.Designer.cs">
+      <DependentUpon>frmSubject.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\DayHourPicker.cs">
       <SubType>UserControl</SubType>
@@ -113,10 +125,10 @@
     <Compile Include="Forms\frmAbout.Designer.cs">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmWorkingPattern.cs">
+    <Compile Include="Forms\Admin\frmWorkingPattern.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmWorkingPattern.Designer.cs">
+    <Compile Include="Forms\Admin\frmWorkingPattern.Designer.cs">
       <DependentUpon>frmWorkingPattern.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MDIParent1.cs">
@@ -125,10 +137,10 @@
     <Compile Include="Forms\MDIParent1.Designer.cs">
       <DependentUpon>MDIParent1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmTutor.cs">
+    <Compile Include="Forms\Admin\frmTutor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmTutor.Designer.cs">
+    <Compile Include="Forms\Admin\frmTutor.Designer.cs">
       <DependentUpon>frmTutor.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperClasses\clsApplicationInfo.cs" />
@@ -137,19 +149,22 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Forms\Admin\baseAdminForm.resx">
+      <DependentUpon>baseAdminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmDepartment.resx">
+    <EmbeddedResource Include="Forms\Admin\frmDepartment.resx">
       <DependentUpon>frmDepartment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmWorkingPattern.resx">
+    <EmbeddedResource Include="Forms\Admin\frmWorkingPattern.resx">
       <DependentUpon>frmWorkingPattern.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MDIParent1.resx">
       <DependentUpon>MDIParent1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmTutor.resx">
+    <EmbeddedResource Include="Forms\Admin\frmTutor.resx">
       <DependentUpon>frmTutor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

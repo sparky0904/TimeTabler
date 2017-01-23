@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TimeTable.HelperClasses;
 using TimeTable.Forms;
+using TimeTable.Forms.Admin;
 using TimeTable.AppLogic;
 
 namespace TimeTable
@@ -19,6 +20,7 @@ namespace TimeTable
 
         // Set up the forms to be used in the program, will create them here they will be initalised as required
         public frmTutor frmTutor;
+
         public frmDepartment frmDepartment;
         public frmWorkingPattern frmWorkingPattern;
 
@@ -115,7 +117,7 @@ namespace TimeTable
         private void MDIParent1_Load(object sender, EventArgs e)
         {
             // Set the title of the form
-            this.Text = clsApplicationInfo.Title + 
+            this.Text = clsApplicationInfo.Title +
                 " v" + clsApplicationInfo.Version;
 
             // set size of form and location
